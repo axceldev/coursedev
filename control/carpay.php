@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           function facturarCarrito(){
-                console.log(carrito);
+                let nombre = $(this).find("td:eq(0)").text();
           }
 
           // Eventos
