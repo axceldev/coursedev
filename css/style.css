@@ -5,6 +5,9 @@
     --green: #0c443a;
     --ligth-green: #25d1b2;
     --degraded: linear-gradient(90deg, var(--ligth-green), var(--green));
+    --delete: #EC7063;
+    --clean: #5DADE2;
+    --bill: #45B39D;
 }
 
 *{
@@ -37,7 +40,7 @@ section{
     min-height: 100vh;
     padding: 0 9%;
     padding-top: 7.5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 
 .btn{
@@ -54,10 +57,60 @@ section{
 
 }
 
-.btn:hover{
+.btn-danger{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .8rem 1.5rem;
+    border-radius: 1.2rem;
+    background: var(--delete);
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 .5rem .1rem rgba(0, 0, 0, .1);
+    transition: all .3s linear;
+}
+
+.boton-facturar{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .8rem 3rem;
+    border-radius: 5rem;
+    background: var(--bill);
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 .5rem .1rem rgba(0, 0, 0, .1);
+    transition: all .3s linear;
+}
+
+.boton-vaciar{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .8rem 3rem;
+    border-radius: 5rem;
+    background: var(--clean);
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 .5rem .1rem rgba(0, 0, 0, .1);
+    transition: all .3s linear;
+}
+
+.btn:hover
+{
+    transform: scale(1.1);
+}
+.btn-danger:hover{
     transform: scale(1.1);
 }
 
+.boton-facturar:hover{
+    transform: scale(1.1);
+}
+
+.boton-vaciar:hover{
+    transform: scale(1.1);
+}
 
 .heading{
     text-align: center;
@@ -253,6 +306,55 @@ header label{
     color: #666;
     padding: 1rem 0;
     
+}
+.car-pay{
+    background: white;
+}
+.car-pay .content-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/*estilos de tabla*/
+.styled-table {
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    align-items: center;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
 }
 
 /*contactos*/
