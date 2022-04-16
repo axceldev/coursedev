@@ -357,6 +357,10 @@ header label{
     color: #009879;
 }
 
+.id-product{
+    display: none;
+}
+
 /*contactos*/
 
 .contact{

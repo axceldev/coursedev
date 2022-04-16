@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Variables
           const baseDeDatos = <?php echo $jsonProd ?>;
           let carrito = [];
+          let producto = {};
           const divisa = 'COP';
           const DOMitems = document.querySelector('#items');
           //const DOMcarrito = document.querySelector('#carrito');
@@ -83,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
           * Dibuja todos los productos guardados en el carrito
           */
           function renderizarCarrito() {
+              let count = 0;
               DOMcontenidotabla.innerHTML = "";
               // Quitamos los duplicados
               const carritoSinDuplicados = [...new Set(carrito)];
@@ -99,18 +101,24 @@ document.addEventListener('DOMContentLoaded', () => {
                       return itemId === item ? total += 1 : total;
                   }, 0);
                   // Vamos a ir adjuntando elementos a la tabla.
+                  count++
                   const fila = document.createElement("tr");
-                  // La celda del nombre
+                  fila.setAttribute("id",`fila${count}`);
+                  const celdaId = document.createElement("td");
+                  celdaId.innerText = item;
+                  celdaId.setAttribute('style', 'display: none;');
+                  fila.appendChild(celdaId);
+
                   const celdaNombre = document.createElement("td");
                   celdaNombre.innerText = miItem[0].nombre;
                   fila.appendChild(celdaNombre);
 
                   const celdaCant = document.createElement("td");
-                  celdaCant.innerText = `${numeroUnidadesItem} und.`;
+                  celdaCant.innerText = numeroUnidadesItem;
                   fila.appendChild(celdaCant);
 
                   const celdaPrecio = document.createElement("td");
-                  celdaPrecio.innerText = `$ ${miItem[0].precio * numeroUnidadesItem}`;
+                  celdaPrecio.innerText = `${miItem[0].precio * numeroUnidadesItem}`;
                   fila.appendChild(celdaPrecio);
 
                   const miBoton = document.createElement('button');
@@ -125,9 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
                   fila.appendChild(celdaBoton);
                   DOMcontenidotabla.appendChild(fila);
               });
-                
+
              // Renderizamos el precio total en el HTML
                 DOMtotal.textContent = `$ ${calcularTotal()}COP`;
+                
           }
 
           /**
@@ -170,9 +179,21 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           function facturarCarrito(){
-                let nombre = $(this).find("td:eq(0)").text();
+              let obtenerFila = document.getElementById("fila1");
+              let elementoFila = obtenerFila.getElementsByTagName("td");
+              producto.id = elementoFila[0].innerHTML;
+              producto.cantidad = elementoFila[2].innerHTML;
+              producto.precio = elementoFila[3].innerHTML;
+              var jsonCompleto = JSON.stringify(producto); 
+              $.ajax({
+                method: 'post',
+                url: 'control/insertOrder.php',
+                data: {producto: jsonCompleto},
+                success: function(response) {
+                console.log(response);
+                }
+            });
           }
-
           // Eventos
           DOMbotonVaciar.addEventListener('click', vaciarCarrito);
           DOMbotonFacturar.addEventListener('click', facturarCarrito)
@@ -181,3 +202,4 @@ document.addEventListener('DOMContentLoaded', () => {
           renderizarCarrito();
         });
 </script>
+

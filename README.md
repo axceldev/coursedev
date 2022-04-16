@@ -1,9 +1,9 @@
 # Iniciar aplicación 
 
-# Nombre de la base de datos: coursedev
-# Nombre de documentos: products, orders y bills
+Nombre de la base de datos: coursedev
+Nombre de documentos: products, orders y bills
 
-# Ejecutar el siguiente json para products
+ Ejecutar el siguiente json para products
 [
   {
       "nombre": "HTML 5",

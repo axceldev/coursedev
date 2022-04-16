@@ -92,9 +92,10 @@
     <section class="car-pay" id="car-pay">
         <h2 class="heading">Mi carrito de compras</h2>
             <div class="content-box">
-                <table  class="styled-table">
+                <table  class="styled-table" id="tablaproduct">
                     <thead>
                         <tr>
+                            <th style="display: none;">id</th>
                             <th>Nombre</th>
                             <th>Cantidad</th>
                             <th>Precio</th>
