@@ -1,9 +1,15 @@
 <?php require_once("db/conexion_db.php"); 
     $datos = $productos->find();
-    $producto=new \stdClass();
+    class Productos {
+        public $id;
+        public $nombre; 
+        public $precio;  
+        public $imagen;  
+    }
+    $producto=new Productos;
     $listProductos = array();
     foreach ($datos as $dato) {
-        $producto=new \stdClass();
+        $producto=new Productos;
         $producto->id = (string) $dato['_id'];
         $producto->nombre = $dato['nombre'];
         $producto->precio = $dato['precio'];
@@ -181,16 +187,20 @@ document.addEventListener('DOMContentLoaded', () => {
           function facturarCarrito(){
               let obtenerFila = document.getElementById("fila1");
               let elementoFila = obtenerFila.getElementsByTagName("td");
+              let totalFac = 0;
+              var producto = new Object();
               producto.id = elementoFila[0].innerHTML;
               producto.cantidad = elementoFila[2].innerHTML;
               producto.precio = elementoFila[3].innerHTML;
-              var jsonCompleto = JSON.stringify(producto); 
+              totalFac += Number(elementoFila[3].innerHTML);
               $.ajax({
                 method: 'post',
                 url: 'control/insertOrder.php',
-                data: {producto: jsonCompleto},
+                data: {productos: producto,
+                       total: totalFac},
                 success: function(response) {
                 console.log(response);
+                vaciarCarrito();
                 }
             });
           }

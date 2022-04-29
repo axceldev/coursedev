@@ -1,5 +1,17 @@
 # Iniciar aplicación 
 
+1. Como requerimiento se debe tener instalado la extesion de mongo para php segun su version del mismo
+
+Link --> https://pecl.php.net/package/mongodb
+
+2. Iniciar el mongo por cmd no por mean
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongod
+
+3. realizar estos cambios en la db para facilidad para gestionar utilizaremos mongo compas
+
+link --> https://www.mongodb.com/try/download/compass
+
 Nombre de la base de datos: coursedev
 Nombre de documentos: products, orders y bills
 
@@ -32,6 +44,6 @@ Nombre de documentos: products, orders y bills
   }
 ]
 
-
+4. Listo poner a correr la aplicacion en el navegador de 
 
 
