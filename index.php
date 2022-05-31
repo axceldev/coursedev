@@ -97,7 +97,7 @@
 	    </div>
                 <form>
                     <div class="inputbox">
-                        <input type="number" name="name" id="name" required>
+                        <input type="number" name="identification" id="identification" required>
                         <label for="">Cedula</label>
                     </div>
                     <div class="inputbox">

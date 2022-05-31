@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
           // Variables
           const baseDeDatos = <?php echo $jsonProd ?>;
           const ivaDb = <?php echo $ivaParam ?>;
+          let ivaF = 0;
+          let subTotalF = 0;
+          let totalF = 0;
           let carrito = [];
           let producto = {};
           const divisa = 'COP';
@@ -156,13 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
               });
 
              // Renderizamos el precio total en el HTML
-                const ivaValido = ivaDb;
-                const totalcop = calcularTotal();
-                const ivaCalc = (totalcop * ivaValido);
-                const subtotalCalc = totalcop - (totalcop * ivaValido);
-                DOMiva.textContent = `$ ${ivaCalc} (${ivaValido * 100}%) COP`;
-                DOMsubtotal.textContent = `$ ${subtotalCalc} COP`;
-                DOMtotal.textContent = `$ ${calcularTotal()} COP`;
+                totalF = calcularTotal();
+                ivaF = (totalF * ivaDb);
+                subTotalF = totalF - (totalF * ivaDb);
+                DOMiva.textContent = `$ ${ivaF} (${ivaDb * 100}%) ${divisa}`;
+                DOMsubtotal.textContent = `$ ${subTotalF} ${divisa}`;
+                DOMtotal.textContent = `$ ${totalF} ${divisa}`;
           }
 
           /**
@@ -208,16 +210,23 @@ document.addEventListener('DOMContentLoaded', () => {
               let obtenerFila = document.getElementById("fila1");
               let elementoFila = obtenerFila.getElementsByTagName("td");
               let totalFac = 0;
+              var cliente = new Object();
+              cliente.identificacion = document.getElementById("identification").value; 
+              cliente.nombre = document.getElementById("name").value; 
+              cliente.correo = document.getElementById("email").value; 
+              cliente.telefono = document.getElementById("phone").value; 
               var producto = new Object();
               producto.id = elementoFila[0].innerHTML;
               producto.cantidad = elementoFila[2].innerHTML;
               producto.precio = elementoFila[3].innerHTML;
-              totalFac += Number(elementoFila[3].innerHTML);
               $.ajax({
                 method: 'post',
                 url: 'control/insertOrder.php',
                 data: {productos: producto,
-                       total: totalFac},
+                       clientes: cliente,
+                       iva: ivaF,
+                       subtotal: subTotalF,
+                       total: totalF},
                 success: function(response) {
                 console.log(response);
                 vaciarCarrito();
