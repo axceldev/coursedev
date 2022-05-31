@@ -132,6 +132,14 @@
                     </tbody>
                     <tfoot>
                         <tr>
+                            <td colspan="2" class="has-text-right is-size-5">Iva</td>
+                            <td colspan="2" class="is-size-5" id="iva"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="has-text-right is-size-5">Subtotal</td>
+                            <td colspan="2" class="is-size-5" id="subtotal"></td>
+                        </tr>
+                        <tr>
                             <td colspan="2" class="has-text-right is-size-5">Total</td>
                             <td colspan="2" class="is-size-5" id="total"></td>
                         </tr>

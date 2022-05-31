@@ -1,12 +1,24 @@
 <?php require_once("db/conexion_db.php"); 
     $datos = $productos->find();
+    $ivaParams = $parameters->findOne(array('nombre' => 'iva'));
+    $ivaParam = 0;
+
+    foreach($ivaParams as $key => $value) {
+        if ($key == 'valor') { 
+            $ivaParam = $value;
+        }
+    }
+    
     class Productos {
         public $id;
         public $nombre; 
         public $precio;  
         public $imagen;  
     }
-    $producto=new Productos;
+
+
+   $producto= new Productos;
+
     $listProductos = array();
     foreach ($datos as $dato) {
         $producto=new Productos;
@@ -24,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Variables
           const baseDeDatos = <?php echo $jsonProd ?>;
+          const ivaDb = <?php echo $ivaParam ?>;
           let carrito = [];
           let producto = {};
           const divisa = 'COP';
@@ -31,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
           //const DOMcarrito = document.querySelector('#carrito');
           const DOMcontenidotabla = document.querySelector('#contenido-Tabla');
           const DOMtotal = document.querySelector('#total');
+          const DOMiva = document.querySelector('#iva');
+          const DOMsubtotal = document.querySelector('#subtotal');
           const DOMbotonVaciar = document.querySelector('#boton-vaciar');
           const DOMbotonFacturar = document.querySelector('#boton-facturar');
 
@@ -141,8 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
               });
 
              // Renderizamos el precio total en el HTML
-                DOMtotal.textContent = `$ ${calcularTotal()}COP`;
-                
+                const ivaValido = ivaDb;
+                const totalcop = calcularTotal();
+                const ivaCalc = (totalcop * ivaValido);
+                const subtotalCalc = totalcop - (totalcop * ivaValido);
+                DOMiva.textContent = `$ ${ivaCalc} (${ivaValido * 100}%) COP`;
+                DOMsubtotal.textContent = `$ ${subtotalCalc} COP`;
+                DOMtotal.textContent = `$ ${calcularTotal()} COP`;
           }
 
           /**
