@@ -243,6 +243,19 @@ header label{
 
 }
 
+.linea {
+    border-top: 1px solid black;
+    height: 2px;
+    padding: 0;
+    margin: 5px auto 15px auto;
+}
+  
+.centrado{
+      text-align: center;
+      font-size: 1.8rem;
+      margin: 5px auto 20px auto;
+}
+
 .about .content-box .box .description{
     color: #666;
     font-size: 1.5rem;
@@ -250,7 +263,13 @@ header label{
 
 }
 
-
+/*CLIENTES*/
+.product .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 1em;
+ }
 /*PRODUCTOS*/
 
 .product{
@@ -307,6 +326,48 @@ header label{
     padding: 1rem 0;
     
 }
+
+.car-pay form{
+    flex: 1 1 40rem;  
+    padding: 2rem 3rem;
+    border: .1rem solid rgba(0, 0, 0, .2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    border-radius: .5rem;
+    background: white; 
+}
+.car-pay form .inputbox{
+    position: relative;
+}
+
+.car-pay form .inputbox input{
+    width:  100%;
+    background: none;
+    color: #333;
+    margin: 1.5rem 0;
+    padding: .5rem 0;
+    font-size: 1.7rem;
+    border-bottom: .1rem solid rgba(0, 0, 0, .1);
+    text-transform: none;
+}
+
+.car-pay form .inputbox label{
+    position: absolute;
+    top: 1.7rem;
+    left: 0;
+    font-size: 1.7rem;
+    color: #666;
+    transition: .2s linear;
+}
+
+.car-pay form .inputbox input:focus ~ label,
+.car-pay form .inputbox input:valid ~ label
+{
+    top: -.5rem;
+    font-size: 1.5rem;
+    color: var(--ligth-green);
+    
+}
+
 .car-pay{
     background: white;
 }
@@ -434,8 +495,6 @@ header label{
     color: var(--ligth-green);
     
 }
-
-
 
 /*subir archivo*/
 .input-file{

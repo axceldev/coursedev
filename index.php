@@ -91,6 +91,32 @@
     </section>
     <section class="car-pay" id="car-pay">
         <h2 class="heading">Mi carrito de compras</h2>
+        <div class="centrado">
+		<strong>Cliente</strong>
+		<div class="linea"></div>
+	    </div>
+                <form>
+                    <div class="inputbox">
+                        <input type="number" name="name" id="name" required>
+                        <label for="">Cedula</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="name" id="name" required>
+                        <label for="">Nombre</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" name="email" id="email" required>
+                        <label for="">Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="number" name="phone" id="phone" required>
+                        <label for="">Teléfono</label>
+                    </div>
+                </form>
+                <div class="centrado">
+		        <strong>Orden Resumida</strong>
+		        <div class="linea"></div>
+	            </div>
             <div class="content-box">
                 <table  class="styled-table" id="tablaproduct">
                     <thead>
