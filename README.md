@@ -13,7 +13,7 @@ C:\Program Files\MongoDB\Server\5.0\bin>mongod
 link --> https://www.mongodb.com/try/download/compass
 
 Nombre de la base de datos: coursedev
-Nombre de documentos: products, orders y bills
+Nombre de documentos: products, orders y bills, parameters, clients
 
  Ejecutar el siguiente json para products
 [
@@ -42,6 +42,14 @@ Nombre de documentos: products, orders y bills
       "precio": 36000,
       "imagen": "img/angular-icon.png"
   }
+]
+
+ejecutar el siguiente json para parameters
+[
+    {
+      "nombre":"iva",
+      "valor":0.19
+    }
 ]
 
 4. Listo poner a correr la aplicacion en el navegador de 
