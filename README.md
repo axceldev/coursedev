@@ -52,6 +52,17 @@ ejecutar el siguiente json para parameters
     }
 ]
 
+ejecutar el siguiente json para clients
+
+[
+    {
+        identificacion: "1002836084"
+        nombre: "CRISTIAN BAMBAGUE MELENDEZ"
+        correo: "criistiianb10@gmail.com"
+        telefono:"3205756052"
+    }
+]
+
 4. Listo poner a correr la aplicacion en el navegador de 
 
 

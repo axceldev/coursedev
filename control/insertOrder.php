@@ -6,7 +6,7 @@ $iva = $_POST['iva'];
 $subtotal = $_POST['subtotal'];
 $total = $_POST['total'];
 
-$dato = $productos;
+$productoF = $productos;
 $clienteF = $clientes;
 $identCliente = $clienteF['identificacion'];
 $idClienteF;
@@ -22,7 +22,6 @@ class Ordenes {
 }
 
 class Facturas {
-    public $idFactura;
     public $idCliente;
     public $iva;
     public $subtotal;
@@ -30,7 +29,6 @@ class Facturas {
 }
 
 class Clientes {
-    public $idCliente;
     public $identificacion;
     public $nombre;
     public $correo;
@@ -39,12 +37,13 @@ class Clientes {
 
 
 //Validamos cliente
-$cursor = $clients->find(array('identificacion' => $identCliente));
-$numeroClientes = $cursor->count();
+$numeroClientes = $clients->count(array('identificacion'=> $identCliente));
 if ($numeroClientes > 0){
     $clienteDb = $clients->findOne(array('identificacion' => $identCliente));
-    foreach ($clienteDb as $cln) {
-        $idClienteF = (string) $cln['_id'];
+    foreach($clienteDb as $key => $value) {
+        if ($key == '_id') { 
+            $idClienteF = $value;
+        }
     }
 }else {
     $cliente = new Clientes();
@@ -71,9 +70,9 @@ if ($idClienteF != null) {
 if($idFactura != null){
     $orden = new Ordenes;
     $orden->idFactura = (string) $idFactura;
-    $orden->idProducto =  (string) $dato['id'];
-    $orden->cantidad = $dato['cantidad'];
-    $orden->precio = $dato['precio'];
+    $orden->idProducto =  (string) $productoF['id'];
+    $orden->cantidad = $productoF['cantidad'];
+    $orden->precio = $productoF['precio'];
     $insertResult = $orders->insertOne($orden);
 }
 

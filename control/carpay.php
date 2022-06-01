@@ -230,6 +230,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 success: function(response) {
                 console.log(response);
                 vaciarCarrito();
+                document.getElementById("identification").value=""; 
+                document.getElementById("name").value=""; 
+                document.getElementById("email").value="";
+                document.getElementById("phone").value="";
+                alert("Guardado con exito!!");
                 }
             });
           }
